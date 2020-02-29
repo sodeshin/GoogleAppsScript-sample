@@ -1,1 +1,19 @@
-{"files":[{"id":"c5712478-c862-4f51-a55e-d3a2364f07ea","name":"コード","type":"server_js","source":"function doPost(e) {\n  var message \u003d getTranslateText(e.parameter.text, e.parameter.trigger_word);\n  postSlack(message);\n}\n\nfunction getTranslateText(text, trigger) {\n    var targetText \u003d text.replace(trigger, \u0027\u0027);\n    return LanguageApp.translate(targetText, \"ja\", \"zh\");\n}\n\nfunction postSlack(text){\n  var url \u003d \"-URL-\";\n  var options \u003d {\n    \"method\" : \"POST\",\n    \"headers\": {\"Content-type\": \"application/json\"},\n    \"payload\" : \u0027{\"text\":\"\u0027 + text + \u0027\"}\u0027\n  };\n  UrlFetchApp.fetch(url, options);\n}"},{"id":"4d185f77-7e77-4667-977c-d784d18fa029","name":"appsscript","type":"json","source":"{\n  \"timeZone\": \"Asia/Tokyo\",\n  \"dependencies\": {\n  },\n  \"webapp\": {\n    \"access\": \"ANYONE_ANONYMOUS\",\n    \"executeAs\": \"USER_DEPLOYING\"\n  },\n  \"exceptionLogging\": \"STACKDRIVER\"\n}"}]}
+function doPost(e) {
+  var message = getTranslateText(e.parameter.text, e.parameter.trigger_word);
+  postSlack(message);
+}
+
+function getTranslateText(text, trigger) {
+    var targetText = text.replace(trigger, '');
+    return LanguageApp.translate(targetText, "ja", "zh");
+}
+
+function postSlack(text){
+  var url = "-URL-";
+  var options = {
+    "method" : "POST",
+    "headers": {"Content-type": "application/json"},
+    "payload" : '{"text":"' + text + '"}'
+  };
+  UrlFetchApp.fetch(url, options);
+}
