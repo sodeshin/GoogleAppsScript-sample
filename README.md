@@ -1,6 +1,5 @@
 
 # GoogleAppsScript Sample
-高等専門学校のとき作成したGoogleAppsScript.
 Slackと連携することを想定しています.
 -URL-を適宜変更してください.
 
